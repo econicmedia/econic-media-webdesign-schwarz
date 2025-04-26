@@ -1,9 +1,24 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  
+  // Smooth scroll function
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: element.offsetTop - 100 // Offset for header
+      });
+      
+      // Update URL without page reload (optional)
+      window.history.pushState({}, '', `/#${sectionId}`);
+    }
+  };
   
   return (
     <footer className="bg-black border-t border-gray-800">
@@ -19,22 +34,22 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-medium text-white">Sitemap</h4>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-teal-400 transition-colors">Startseite</Link></li>
-              <li><Link to="/uber-uns" className="text-gray-300 hover:text-teal-400 transition-colors">Über uns</Link></li>
-              <li><Link to="/dienstleistungen" className="text-gray-300 hover:text-teal-400 transition-colors">Dienstleistungen</Link></li>
-              <li><Link to="/portfolio" className="text-gray-300 hover:text-teal-400 transition-colors">Portfolio</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-teal-400 transition-colors">Blog</Link></li>
-              <li><Link to="/kontakt" className="text-gray-300 hover:text-teal-400 transition-colors">Kontakt</Link></li>
+              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="text-gray-300 hover:text-teal-400 transition-colors">Startseite</a></li>
+              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-gray-300 hover:text-teal-400 transition-colors">Über uns</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-300 hover:text-teal-400 transition-colors">Dienstleistungen</a></li>
+              <li><a href="#portfolio" onClick={(e) => scrollToSection(e, 'portfolio')} className="text-gray-300 hover:text-teal-400 transition-colors">Portfolio</a></li>
+              <li><a href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')} className="text-gray-300 hover:text-teal-400 transition-colors">Testimonials</a></li>
+              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-300 hover:text-teal-400 transition-colors">Kontakt</a></li>
             </ul>
           </div>
           
           <div className="space-y-4">
             <h4 className="text-lg font-medium text-white">Dienstleistungen</h4>
             <ul className="space-y-2">
-              <li><a href="/dienstleistungen#webdesign" className="text-gray-300 hover:text-teal-400 transition-colors">Webdesign</a></li>
-              <li><a href="/dienstleistungen#webentwicklung" className="text-gray-300 hover:text-teal-400 transition-colors">Webentwicklung</a></li>
-              <li><a href="/dienstleistungen#seo" className="text-gray-300 hover:text-teal-400 transition-colors">SEO-Optimierung</a></li>
-              <li><a href="/dienstleistungen#wartung" className="text-gray-300 hover:text-teal-400 transition-colors">Wartung & Support</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-300 hover:text-teal-400 transition-colors">Webdesign</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-300 hover:text-teal-400 transition-colors">Webentwicklung</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-300 hover:text-teal-400 transition-colors">SEO-Optimierung</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-300 hover:text-teal-400 transition-colors">Wartung & Support</a></li>
             </ul>
           </div>
           
@@ -54,9 +69,9 @@ const Footer: React.FC = () => {
             &copy; {currentYear} Econic Media. Alle Rechte vorbehalten.
           </p>
           <div className="flex space-x-6">
-            <Link to="/datenschutz" className="text-gray-400 hover:text-teal-400 transition-colors">Datenschutz</Link>
-            <Link to="/impressum" className="text-gray-400 hover:text-teal-400 transition-colors">Impressum</Link>
-            <Link to="/agb" className="text-gray-400 hover:text-teal-400 transition-colors">AGB</Link>
+            <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">Datenschutz</a>
+            <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">Impressum</a>
+            <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">AGB</a>
           </div>
         </div>
       </div>
