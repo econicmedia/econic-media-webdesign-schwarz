@@ -61,7 +61,8 @@ const Navbar: React.FC = () => {
       
       const currentSection = sections
         .filter(section => section !== null)
-        .findLast(section => section?.offsetTop && section.offsetTop <= scrollPosition);
+        .reverse() // Replace findLast with this approach
+        .find(section => section?.offsetTop && section.offsetTop <= scrollPosition);
         
       if (currentSection) {
         setActiveSection(currentSection.id);
